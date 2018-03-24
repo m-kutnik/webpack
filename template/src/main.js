@@ -10,6 +10,7 @@ import router from './router'
 
 // Offline support
 if (process.env.NODE_ENV === 'production') {
+  // eslint-disable global-require
   const runtime = require('offline-plugin/runtime');
 
   runtime.install({

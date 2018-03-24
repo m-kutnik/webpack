@@ -83,11 +83,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
-    // enable offline support
-    new OfflinePlugin({
-      AppCache: 'all',
-      ServiceWorker: { events: true },
-    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -125,7 +120,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // enable offline support
+    new OfflinePlugin({
+      ServiceWorker: { events: true },
+    })
   ]
 })
 

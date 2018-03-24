@@ -8,6 +8,20 @@ import App from './App'
 import router from './router'
 {{/router}}
 
+// Offline support
+if (process.env.NODE_ENV === 'production') {
+  const runtime = require('offline-plugin/runtime');
+
+  runtime.install({
+    onUpdateReady() {
+      runtime.applyUpdate();
+    },
+    onUpdated() {
+      window.location.reload();
+    },
+  });
+}
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -12,8 +12,9 @@
 <script>
 {{#unless router}}
 import HelloWorld from './components/HelloWorld'
-
 {{/unless}}
+import '@/assets/scss/normalize.scss'
+
 export default {
   name: 'App'{{#router}}{{else}},
   components: {
